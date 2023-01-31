@@ -2,6 +2,8 @@ package application;
 	
 
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -398,6 +400,23 @@ public class Main extends Application {
 		        }
 		    });
 	      
+	     // Start Thread TCP
+	     new Thread(() -> {
+	            while (true) {
+	            	try {
+	            		Thread.sleep(1000);
+	            		TCP.ConnectionIsAlive = TCP.Connect();
+	            		while(TCP.ConnectionIsAlive) {
+		            		TCP.run();
+		            	}
+	            	}catch(Exception e) {
+	            		e.printStackTrace();
+	            	}
+	            	
+	            	
+	            }
+	        }).start();
+	     
 	      //Setting title to the Stage 
 	      stage.setTitle("Oscilloscope"); 
 	         
