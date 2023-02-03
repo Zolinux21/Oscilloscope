@@ -47,7 +47,7 @@ public class Main extends Application {
 		 Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		 
 		 float screenResoultionX = (float)screenBounds.getMaxX();
-		 float screenResoultionY = (float)screenBounds.getMaxY();;
+		 float screenResoultionY = (float)screenBounds.getMaxY();
 		 
 		 float usedScreenX = (screenResoultionX / 100) * 90;
  		 
@@ -184,6 +184,7 @@ public class Main extends Application {
 	    		 						cubicCurve3,
 	    		 						cubicCurve4,
 	    		 						cubicCurve5};
+	     
 	     for(int i = 0; i < cubiCurveArray.length; i++) {
      		cubiCurveArray[i].setFill(Color.TRANSPARENT);
      		cubiCurveArray[i].setStroke(Color.rgb(137, 240, 201));
