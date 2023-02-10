@@ -328,14 +328,22 @@ public class Main extends Application {
 	      
 	      // Start Thread TCP
 		     new Thread(() -> {
+		    	 TCP.ReadConfigFile();
 		            while (true) {
 		            	try {
-		            		
-		            		Thread.sleep(3000);
+		            		Thread.sleep(1000);
 		            		setSceneShow();
 		            		TCP.ConnectionIsAlive = TCP.Connect();
 		            		while(TCP.ConnectionIsAlive) {
-			            		TCP.run();
+		            			int readValue = 0;
+		            			boolean writeDone = false;
+		            			readValue = TCP.read("read#Main.int");
+		            			System.out.println("ReadValue: " + readValue);
+			            		Thread.sleep(500);
+		            			writeDone = TCP.write("write#Main.int#12");
+			            		
+			            		System.out.println("writeDonw: " + writeDone);
+			            		Thread.sleep(500);
 			            		
 			            	}
 		            	}catch(Exception e) {
