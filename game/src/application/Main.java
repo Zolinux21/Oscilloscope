@@ -325,26 +325,23 @@ public class Main extends Application {
 	        
 	      //Displaying the contents of the stage 
 	      stage.show(); 
-	      
+	      setSceneShow();
 	      // Start Thread TCP
 		     new Thread(() -> {
 		    	 TCP.ReadConfigFile();
 		            while (true) {
 		            	try {
 		            		Thread.sleep(1000);
-		            		setSceneShow();
+		            		
 		            		TCP.ConnectionIsAlive = TCP.Connect();
 		            		while(TCP.ConnectionIsAlive) {
 		            			int readValue = 0;
 		            			boolean writeDone = false;
-		            			readValue = TCP.read("read#Main.int");
-		            			System.out.println("ReadValue: " + readValue);
+		            			readValue = TCP.read("read#LSTmini_pc.boot");
 			            		Thread.sleep(500);
-		            			writeDone = TCP.write("write#Main.int#12");
-			            		
-			            		System.out.println("writeDonw: " + writeDone);
+		            			writeDone = TCP.write("write#LSTmini_pc.oszcilloszkop_done#3");
 			            		Thread.sleep(500);
-			            		
+
 			            	}
 		            	}catch(Exception e) {
 		            		e.printStackTrace();
