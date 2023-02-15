@@ -71,7 +71,7 @@ public class TCP {
     		bMeassage = message.getBytes(StandardCharsets.US_ASCII);
         	out.write(bMeassage);
         	int length = socket.getInputStream().read(data);
-        	System.out.println("Received data: " + new String(data, 0, length));
+        	System.out.println(message + ": " + new String(data, 0, length));
         	System.out.println("-------------------------");
         	value = Integer.parseInt(new String(data, 0, length));   
         } catch (IOException e) {
@@ -114,8 +114,8 @@ public class TCP {
     		System.out.println("The source file path is: " + sourceFilePath);
     		
     	    File configFile = new File(sourceFilePath);*/
-    	    //File configFile = new File("/home/narancsikon/git/Resources/config.txt");
-    		File configFile = new File("/home/admin/config.txt");
+    	    File configFile = new File("/home/narancsikon/git/Resources/config.txt");
+    		//File configFile = new File("/home/admin/config.txt");
     	    Scanner myScanner = new Scanner(configFile);
     	    IpAddress = myScanner.nextLine();
     	    Port = Integer.parseInt(myScanner.nextLine());

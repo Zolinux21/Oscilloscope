@@ -35,65 +35,66 @@ import javafx.geometry.Rectangle2D;
 
 public class Main extends Application {
 	// Steps
-		int[] currentLevel = {6, 6, 6, 6, 6, 6, 6, 6}; // = 0
-		int currentVerticalLevel = 0;
+		public static int[] currentLevel = {6, 6, 6, 6, 6, 6, 6, 6}; // = 0
+		static int currentVerticalLevel = 0;
 		
+		public static boolean gameEnable = false;
 		 // PLC Variables
-		 int counter = 0;
+		static int counter = 0;
 		 
 		 // PLC variables
-		 Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+		static Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		 
 		 //float screenResoultionX = (float)screenBounds.getMaxX();
 		 //float screenResoultionY = (float)screenBounds.getMaxY();
 		 
-		 float screenResoultionX = 800;
-		 float screenResoultionY = 600;
+		static float screenResoultionX = 800;
+		static float screenResoultionY = 600;
 		 
-		 float usedScreenX = (screenResoultionX / 100) * 90;
+		static float usedScreenX = (screenResoultionX / 100) * 90;
 		 
-		 float startPointX = 0.0f;
-		 float startPointY = screenResoultionY / 2;
-		 float endPointX = screenResoultionX;
-		 float endPointY = startPointY;
+		static float startPointX = 0.0f;
+		static float startPointY = screenResoultionY / 2;
+		static float endPointX = screenResoultionX;
+		static float endPointY = startPointY;
 		 
-		 float countOfverticalLines = 16;
+		static float countOfverticalLines = 16;
 		 // X
-		 float inflexPoint1 = ( screenResoultionX / countOfverticalLines ) * 1;
-		 float maxPoint1 = ( screenResoultionX / countOfverticalLines ) * 2;
-		 float inflexPoint2 = ( screenResoultionX / countOfverticalLines ) * 3;
-		 float maxPoint2 = ( screenResoultionX / countOfverticalLines ) * 4;
-		 float inflexPoint3 = ( screenResoultionX / countOfverticalLines ) * 5;
-		 float maxPoint3 = ( screenResoultionX / countOfverticalLines ) * 6;
-	 	 float inflexPoint4 = ( screenResoultionX / countOfverticalLines ) * 7;
-		 float maxPoint4 = ( screenResoultionX / countOfverticalLines ) * 8;
-		 float inflexPoint5 = ( screenResoultionX / countOfverticalLines ) * 9;
-		 float maxPoint5 = ( screenResoultionX / countOfverticalLines ) * 10;
-		 float inflexPoint6 = ( screenResoultionX / countOfverticalLines ) * 11;
-		 float maxPoint6 = ( screenResoultionX / countOfverticalLines ) * 12;
-		 float inflexPoint7 = ( screenResoultionX / countOfverticalLines ) * 13;
-		 float maxPoint7 = ( screenResoultionX / countOfverticalLines ) * 14;
-		 float inflexPoint8 = ( screenResoultionX / countOfverticalLines ) * 15;
-		 float maxPoint8 = ( screenResoultionX / countOfverticalLines ) * 16;
+		static float inflexPoint1 = ( screenResoultionX / countOfverticalLines ) * 1;
+		static float maxPoint1 = ( screenResoultionX / countOfverticalLines ) * 2;
+		static float inflexPoint2 = ( screenResoultionX / countOfverticalLines ) * 3;
+		static float maxPoint2 = ( screenResoultionX / countOfverticalLines ) * 4;
+		static float inflexPoint3 = ( screenResoultionX / countOfverticalLines ) * 5;
+		static float maxPoint3 = ( screenResoultionX / countOfverticalLines ) * 6;
+		static float inflexPoint4 = ( screenResoultionX / countOfverticalLines ) * 7;
+		static float maxPoint4 = ( screenResoultionX / countOfverticalLines ) * 8;
+		static float inflexPoint5 = ( screenResoultionX / countOfverticalLines ) * 9;
+		static float maxPoint5 = ( screenResoultionX / countOfverticalLines ) * 10;
+		static float inflexPoint6 = ( screenResoultionX / countOfverticalLines ) * 11;
+		static float maxPoint6 = ( screenResoultionX / countOfverticalLines ) * 12;
+		static float inflexPoint7 = ( screenResoultionX / countOfverticalLines ) * 13;
+		static float maxPoint7 = ( screenResoultionX / countOfverticalLines ) * 14;
+		static float inflexPoint8 = ( screenResoultionX / countOfverticalLines ) * 15;
+		static float maxPoint8 = ( screenResoultionX / countOfverticalLines ) * 16;
 		 
 
 		 // Y
-		 float countOfHorizontalLines = 6;
-		 float level0 = ( screenResoultionY / 2 );
-		 float level1 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 1);
-		 float level2 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 2);
-		 float level3 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 3);
-		 float level4 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 4);
-		 float level5 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 5);
-		 float level6 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 6);
-		 float levelN1 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 1);
-		 float levelN2 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 2);
-		 float levelN3 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 3);
-		 float levelN4 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 4);
-		 float levelN5 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 5);
-		 float levelN6 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 6);
+		static float countOfHorizontalLines = 6;
+		static float level0 = ( screenResoultionY / 2 );
+		static float level1 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 1);
+		static float level2 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 2);
+		static float level3 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 3);
+		static float level4 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 4);
+		static float level5 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 5);
+		static float level6 = level0 - (((screenResoultionY / 2) / countOfHorizontalLines ) * 6);
+		static float levelN1 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 1);
+		static float levelN2 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 2);
+		static float levelN3 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 3);
+		static float levelN4 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 4);
+		static float levelN5 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 5);
+		static float levelN6 = level0 + (((screenResoultionY / 2) / countOfHorizontalLines ) * 6);
 		 
-		 float[] lvlArray = {levelN6,
+		static float[] lvlArray = {levelN6,
 				 			 levelN5,
 			 				 levelN4,
 							 levelN3,
@@ -108,24 +109,24 @@ public class Main extends Application {
 							 level6};
 
 		 // LINE horizontal
-		 Color lineColors = Color.rgb(83, 150, 125);
+		static Color lineColors = Color.rgb(83, 150, 125);
 	     // high light cross
-	     Color HighLightLineColor = Color.rgb(167, 232, 208);
+		static Color HighLightLineColor = Color.rgb(167, 232, 208);
 		 
 	     //Line Horizontal
-	     Line lineH0 = new Line(startPointX, startPointY, endPointX, endPointY);
-	     Line lineH1 = new Line(startPointX, level1, endPointX, level1);
-	     Line lineH2 = new Line(startPointX, level2, endPointX, level2);
-	     Line lineH3 = new Line(startPointX, level3, endPointX, level3);
-	     Line lineH4 = new Line(startPointX, level4, endPointX, level4);
-	     Line lineH5 = new Line(startPointX, level5, endPointX, level5);
-	     Line lineHN1 = new Line(startPointX, levelN1, endPointX, levelN1);
-	     Line lineHN2 = new Line(startPointX, levelN2, endPointX, levelN2);
-	     Line lineHN3 = new Line(startPointX, levelN3, endPointX, levelN3);
-	     Line lineHN4 = new Line(startPointX, levelN4, endPointX, levelN4);
-	     Line lineHN5 = new Line(startPointX, levelN5, endPointX, levelN5);
+	     static Line lineH0 = new Line(startPointX, startPointY, endPointX, endPointY);
+	     static Line lineH1 = new Line(startPointX, level1, endPointX, level1);
+	     static Line lineH2 = new Line(startPointX, level2, endPointX, level2);
+	     static Line lineH3 = new Line(startPointX, level3, endPointX, level3);
+	     static Line lineH4 = new Line(startPointX, level4, endPointX, level4);
+	     static Line lineH5 = new Line(startPointX, level5, endPointX, level5);
+	     static Line lineHN1 = new Line(startPointX, levelN1, endPointX, levelN1);
+	     static Line lineHN2 = new Line(startPointX, levelN2, endPointX, levelN2);
+	     static Line lineHN3 = new Line(startPointX, levelN3, endPointX, levelN3);
+	     static Line lineHN4 = new Line(startPointX, levelN4, endPointX, levelN4);
+	     static Line lineHN5 = new Line(startPointX, levelN5, endPointX, levelN5);
 	     
-	     Line[] lineHorizontalArray = { 
+	     static Line[] lineHorizontalArray = { 
 					lineHN5,
 					lineHN4,
 					lineHN3,
@@ -141,16 +142,16 @@ public class Main extends Application {
 	     
 	     
 	     //Line Vertical
-	     Line line0 = new Line(maxPoint1, 0, maxPoint1, screenResoultionY);
-	     Line line1 = new Line(maxPoint2, 0, maxPoint2, screenResoultionY);
-	     Line line2 = new Line(maxPoint3, 0, maxPoint3, screenResoultionY);
-	     Line line3 = new Line(maxPoint4, 0, maxPoint4, screenResoultionY);
-	     Line line4 = new Line(maxPoint5, 0, maxPoint5, screenResoultionY);
-	     Line line5 = new Line(maxPoint6, 0, maxPoint6, screenResoultionY);
-	     Line line6 = new Line(maxPoint7, 0, maxPoint7, screenResoultionY);
-	     Line line7 = new Line(maxPoint8, 0, maxPoint8, screenResoultionY);
+	     static Line line0 = new Line(maxPoint1, 0, maxPoint1, screenResoultionY);
+	     static Line line1 = new Line(maxPoint2, 0, maxPoint2, screenResoultionY);
+	     static Line line2 = new Line(maxPoint3, 0, maxPoint3, screenResoultionY);
+	     static Line line3 = new Line(maxPoint4, 0, maxPoint4, screenResoultionY);
+	     static Line line4 = new Line(maxPoint5, 0, maxPoint5, screenResoultionY);
+	     static Line line5 = new Line(maxPoint6, 0, maxPoint6, screenResoultionY);
+	     static Line line6 = new Line(maxPoint7, 0, maxPoint7, screenResoultionY);
+	     static Line line7 = new Line(maxPoint8, 0, maxPoint8, screenResoultionY);
 	     
-	     Line[] lineVerticalArray = {
+	     static Line[] lineVerticalArray = {
 	    		 	line0,
 					line1,
 					line2,
@@ -162,16 +163,16 @@ public class Main extends Application {
 					};
 	     
 	     //Drawing a cubic curve 
-	     CubicCurve cubicCurve0 = new CubicCurve(); 
-	     CubicCurve cubicCurve1 = new CubicCurve(); 
-	     CubicCurve cubicCurve2 = new CubicCurve(); 
-	     CubicCurve cubicCurve3 = new CubicCurve(); 
-	     CubicCurve cubicCurve4 = new CubicCurve();
-	     CubicCurve cubicCurve5 = new CubicCurve();
-	     CubicCurve cubicCurve6 = new CubicCurve();
-	     CubicCurve cubicCurve7 = new CubicCurve();
+	     static CubicCurve cubicCurve0 = new CubicCurve(); 
+	     static CubicCurve cubicCurve1 = new CubicCurve(); 
+	     static CubicCurve cubicCurve2 = new CubicCurve(); 
+	     static CubicCurve cubicCurve3 = new CubicCurve(); 
+	     static CubicCurve cubicCurve4 = new CubicCurve();
+	     static CubicCurve cubicCurve5 = new CubicCurve();
+	     static CubicCurve cubicCurve6 = new CubicCurve();
+	     static CubicCurve cubicCurve7 = new CubicCurve();
 	     
-	     CubicCurve[] cubiCurveArray = {cubicCurve0, 
+	     static CubicCurve[] cubiCurveArray = {cubicCurve0, 
 	    		 						cubicCurve1, 
 	    		 						cubicCurve2,
 	    		 						cubicCurve3,
@@ -181,7 +182,7 @@ public class Main extends Application {
 	    		 						cubicCurve7};
 	     
 	     //Creating a Group object  
-	     Group root = new Group(lineH0,
+	     static Group root = new Group(lineH0,
 	    		 				lineH1,
 	    		 				lineH2,
 	    		 				lineH3,
@@ -210,12 +211,12 @@ public class Main extends Application {
 	    		 				cubicCurve7
 	    		 				);
 	     
-	     Scene scene = new Scene(root, screenResoultionX, screenResoultionY);
+	     static Scene scene = new Scene(root, screenResoultionX, screenResoultionY);
 	     
 	     //effects
-		 Shadow shadow = new Shadow();
-		 InnerShadow innerShadow = new InnerShadow();
-		 Blend blend = new Blend();
+	     static Shadow shadow = new Shadow();
+	     static InnerShadow innerShadow = new InnerShadow();
+	     static Blend blend = new Blend();
 	
 	 @Override 
 	   public void start(Stage stage) {
@@ -227,7 +228,13 @@ public class Main extends Application {
 	     
 	     // EVENTs
 	     scene.setOnKeyPressed(e -> {
+	    	 
+	    		 
+	    	 
 	    	 	if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.NUMPAD4 ) {
+	    	 		if(gameEnable == true) {
+	    	 			
+	    	 		
 	    	 		currentVerticalLevel = currentVerticalLevel - 1;
 	    	 		if(currentVerticalLevel < 0) {
 	    	 			currentVerticalLevel = 0;
@@ -244,7 +251,9 @@ public class Main extends Application {
 	    	 		
 	    	 		System.out.println(currentVerticalLevel);
 	    	 	}
+	    	 	}
 	    	 	if (e.getCode() == KeyCode.RIGHT || e.getCode() == KeyCode.NUMPAD6 ) {
+	    	 		if(gameEnable == true) {
 	    	 		currentVerticalLevel = currentVerticalLevel + 1;
 	    	 		if(currentVerticalLevel > 6) {
 	    	 			currentVerticalLevel = 6;
@@ -260,8 +269,10 @@ public class Main extends Application {
 	    	 		lineHorizontalArray[currentLevel[currentVerticalLevel] - 1].setStroke(HighLightLineColor);
 	    	 		
 	    	 		System.out.println(currentVerticalLevel);
+	    	 		}
 	    	 	}
 		        if (e.getCode() == KeyCode.UP || e.getCode() == KeyCode.NUMPAD8 ) {
+		        	if(gameEnable == true) {
 		        	if(currentLevel[currentVerticalLevel] < 11 ) {
 		        		
 		        		for(int i = 0; i < lineVerticalArray.length; i++) {
@@ -284,8 +295,10 @@ public class Main extends Application {
 		        		}
 		        		System.out.println(currentLevel[currentVerticalLevel]);
 		        	}
+		        	}
 		        }
 		        if (e.getCode() == KeyCode.DOWN || e.getCode() == KeyCode.NUMPAD2) {
+		        	if(gameEnable == true) {
 		        	if(currentLevel[currentVerticalLevel] > 1 ) {
 		        		
 		        		for(int i = 0; i < lineVerticalArray.length; i++) {
@@ -308,12 +321,16 @@ public class Main extends Application {
 		        		}
 		        		System.out.println(currentLevel[currentVerticalLevel]);
 		        	}
+		        	}
 		        }
 		        
 		        
-		        if (e.getCode() == KeyCode.NUMPAD5) {   	
+		        if (e.getCode() == KeyCode.NUMPAD5) { 
+		        	if(gameEnable == true) {
 		        	setSceneShow();
+		        	}
 		        }
+	    	
 		    });
 	      
 	      //Setting title to the Stage 
@@ -325,7 +342,19 @@ public class Main extends Application {
 	        
 	      //Displaying the contents of the stage 
 	      stage.show(); 
-	      setSceneShow();
+	      setSceneBlack();
+	      // Start Thread Work
+	      new Thread(() -> {
+	    	  while(true) {
+	    		  try {
+					Work.run();
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	    	  }
+	      }).start();
+	      
 	      // Start Thread TCP
 		     new Thread(() -> {
 		    	 TCP.ReadConfigFile();
@@ -337,10 +366,15 @@ public class Main extends Application {
 		            		while(TCP.ConnectionIsAlive) {
 		            			int readValue = 0;
 		            			boolean writeDone = false;
-		            			readValue = TCP.read("read#LSTmini_pc.boot");
-			            		Thread.sleep(500);
-		            			writeDone = TCP.write("write#LSTmini_pc.oszcilloszkop_done#3");
-			            		Thread.sleep(500);
+		            			Work.fekete_doboz = TCP.read("read#LSTmini_pc.fekete_doboz");
+			            		Work.kapcsolo_tabla_done = TCP.read("read#LSTmini_pc.kapcsolo_tabla_done");
+			            		Work.boot = TCP.read("read#LSTmini_pc.boot");
+			            		Work.status = TCP.read("read#LST_interface.status");
+			            		Work.oszcilloszkop_skip = TCP.read("read#LSTmini_pc.oszcilloszkop_skip");
+			            		
+			            		
+		            			writeDone = TCP.write("write#LSTmini_pc.oszcilloszkop_done#1");
+			            		Thread.sleep(2000);
 
 			            	}
 		            	}catch(Exception e) {
@@ -356,7 +390,7 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	private void setSceneBlack() {
+	public static void setSceneBlack() {
 		
 		scene.setCursor(Cursor.NONE);
 		
@@ -380,7 +414,7 @@ public class Main extends Application {
 		 scene.setFill(Color.BLACK);
 	}
 	
-	private void setSceneShow() {
+	public static boolean setSceneShow() {
 		//Line Horizontal
 		 lineH0.setStroke(HighLightLineColor);
 		 lineH1.setStroke(lineColors);		 
@@ -522,6 +556,10 @@ public class Main extends Application {
      	 }
 	     
 	     currentVerticalLevel = 0;
+	     
+	     gameEnable = true;
+	     
+	     return true;
 	}
 
 }
